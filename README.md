@@ -16,9 +16,9 @@ Note: Before running, make sure to modify the reference files to the appropriate
 
 ### 2023年9月3日
 
-首先通过实时语音输入或文字输入，然后基于[OpenAI](https://github.com/chatanywhere/GPT_API_free)与Google翻译两个接口，实现NLP语义理解，最后输出目标物品的名字。
+新增了以下内容：首先通过实时语音输入或文字输入，然后基于[OpenAI](https://github.com/chatanywhere/GPT_API_free)与Google翻译两个接口，实现NLP语义理解，最后输出目标物品的名字。
 
-具体代码详见NLP文件夹下的两个程序。
+具体代码详见[NLP](https://github.com/HuaYuXiao/Visual-servo-NLP-based-6DOF-Manipulator-Grasp-System/tree/main/code/NLP)文件夹下的两个程序。
 
 ```shell
 D:\software\anaconda3\python.exe D:\iCloudDrive\项目\NLP\代码\main.py 
