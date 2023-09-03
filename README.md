@@ -16,7 +16,7 @@ Note: Before running, make sure to modify the reference files to the appropriate
 
 ### 2023年9月3日
 
-首先通过实时语音输入或文字输入，然后基于OpenAI与Google翻译两个接口，实现NLP语义理解，最后输出目标物品的名字。
+首先通过实时语音输入或文字输入，然后基于[OpenAI](https://github.com/chatanywhere/GPT_API_free)与Google翻译两个接口，实现NLP语义理解，最后输出目标物品的名字。
 
 具体代码详见NLP文件夹下的两个程序。
 
@@ -32,8 +32,8 @@ Process finished with exit code 0
 ## 小组分工
 
 - Hongjing Tang: visual-servo control and camera configuration
-- 
+  
 - Yuxiao Hua: multi-thread, NLP and final report
-- 
+  
 - Xizhe Hao: voice control and PPT presentation
-- 
+  
