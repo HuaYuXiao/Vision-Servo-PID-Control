@@ -2,10 +2,10 @@
 
 ![HitCount](https://img.shields.io/endpoint?url=https%3A%2F%2Fhits.dwyl.com%2FHuaYuXiao%2FAdaptive-Vision-Servo-for-Robotic-Arm-Automatic-Gripping-System.json%3Fcolor%3Dpink)
 ![Static Badge](https://img.shields.io/badge/ROS-noetic-blue?logo=ros)
-![Static Badge](https://img.shields.io/badge/Ubuntu-22.04-blue?logo=ubuntu)
+![Static Badge](https://img.shields.io/badge/Ubuntu-22.04-red?logo=ubuntu)
 ![Static Badge](https://img.shields.io/badge/Python-3.11.5-blue?logo=python)
 ![Static Badge](https://img.shields.io/badge/CMake-3.26.4-blue?logo=cmake)
-![Static Badge](https://img.shields.io/badge/OpenAI-_-blue?logo=openai)
+![Static Badge](https://img.shields.io/badge/OpenAI-_-green?logo=openai)
 
 在 KINOVA Gen3 lite 机械臂上，实现自适应视觉伺服的自动抓取系统。从自然语言指令得到抓取目标后， 借助 MediaPipe 实现目标物品的精确定位， 并自行设计生成抓取角度与路径，采用自研的自适应视觉伺服算法，将物品抓取到指定位置。
 
@@ -37,8 +37,6 @@ Process finished with exit code 0
 ## 小组分工
 
 - Hongjing Tang: visual-servo control and camera configuration
-  
 - Yuxiao Hua: multi-thread, NLP and final report
-  
 - Xizhe Hao: voice control and PPT presentation
   
