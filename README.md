@@ -1,7 +1,7 @@
 # Vision-Servo-PID-Control-for-Robotic-Arm
 
 ![HitCount](https://img.shields.io/endpoint?url=https%3A%2F%2Fhits.dwyl.com%2FHuaYuXiao%2FAdaptive-Vision-Servo-for-Robotic-Arm-Automatic-Gripping-System.json%3Fcolor%3Dpink)
-![Static Badge](https://img.shields.io/badge/ROS-noetic-22314E?logo=ros)
+![Static Badge](https://img.shields.io/badge/ROS-kinetic-22314E?logo=ros)
 ![Static Badge](https://img.shields.io/badge/Ubuntu-22.04-E95420?logo=ubuntu)
 ![Static Badge](https://img.shields.io/badge/Python-3.11.5-3776AB?logo=python)
 ![Static Badge](https://img.shields.io/badge/OpenAI-_-412991?logo=openai)
