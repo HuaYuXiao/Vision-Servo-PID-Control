@@ -26,8 +26,9 @@ if __name__ == '__main__':
             items = get_items(gpt_message)
             break
 
-    # 如果错误计数达到3次或者成功获取了信息，则使用input获取用户需求
+    # 如果错误计数达到3次或者成功获取了信息
     if cnt_error >= 3:
+        # 使用input获取用户需求
         request = input("请告诉我你的需求，输入在文本框中：")
         gpt_message = gpt_stream(request)
         items = get_items(gpt_message)
