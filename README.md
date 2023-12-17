@@ -4,6 +4,7 @@
 ![Static Badge](https://img.shields.io/badge/ROS-kinetic-22314E?logo=ros)
 ![Static Badge](https://img.shields.io/badge/Ubuntu-16.04-E95420?logo=ubuntu)
 ![Static Badge](https://img.shields.io/badge/Python-_-3776AB?logo=python)
+![Static Badge](https://img.shields.io/badge/TensorFlow-_-FF6F00?logo=tensorflow)
 ![Static Badge](https://img.shields.io/badge/OpenAI-_-412991?logo=openai)
 ![Static Badge](https://img.shields.io/badge/Google_Translate-_-4285F4?logo=googletranslate)
 
@@ -11,7 +12,7 @@ On the KINOVA Gen3 lite robotic arm, an adaptive visual servoing automatic grasp
 
 ## 如何运行
 
-Download all files under the "code" folder, and then run the main.py file.
+Download all files under the `code` folder, and then run the `main.py` file.
 
 Note: Before running, make sure to modify the reference files to the appropriate location on your computer.
 
@@ -25,7 +26,7 @@ Note: Before running, make sure to modify the reference files to the appropriate
 
 具体代码详见[NLP](https://github.com/HuaYuXiao/Visual-servo-NLP-based-6DOF-Manipulator-Grasp-System/tree/main/code/NLP)文件夹下的两个程序。
 
-```shell
+```bash
 D:\software\anaconda3\python.exe D:\iCloudDrive\项目\NLP\代码\main.py 
 请告诉我你的需求：我喜欢冰箱和苹果，我讨厌山和香蕉，他超爱梨和鸭子。
 喜欢的物品：冰箱、苹果、梨、鸭子。
