@@ -1,5 +1,6 @@
 node {
   name: "normalized_input_image_tensor"
+  # 节点操作为 "Placeholder"，表示占位符节点，通常用于接收输入数据
   op: "Placeholder"
   attr {
     key: "dtype"
@@ -7,6 +8,7 @@ node {
       type: DT_FLOAT
     }
   }
+  # 节点属性：形状为 [1, 320, 320, 3]，表示张量的维度
   attr {
     key: "shape"
     value {
@@ -27,17 +29,22 @@ node {
     }
   }
 }
+
+
 node {
   name: "FeatureExtractor/MobilenetV3/Conv/Conv2D"
+  # 节点操作为 "Conv2D"，表示卷积操作
   op: "Conv2D"
   input: "normalized_input_image_tensor"
   input: "FeatureExtractor/MobilenetV3/Conv/weights"
+  # 数据格式为 "NHWC"，表示通道维度在最后一维
   attr {
     key: "data_format"
     value {
       s: "NHWC"
     }
   }
+  # 膨胀率 (dilations) 为 [1, 1, 1, 1]，表示卷积核在输入张量的各个维度上的膨胀率
   attr {
     key: "dilations"
     value {
@@ -49,6 +56,7 @@ node {
       }
     }
   }
+  # 显式填充 (explicit_paddings) 为空列表，表示未使用显式填充
   attr {
     key: "explicit_paddings"
     value {
@@ -56,12 +64,14 @@ node {
       }
     }
   }
+  # 填充方式 (padding) 为 "SAME"，表示使用“同样大小”的填充方式
   attr {
     key: "padding"
     value {
       s: "SAME"
     }
   }
+  # 步幅 (strides) 为 [1, 2, 2, 1]，表示卷积核在输入张量上的滑动步幅
   attr {
     key: "strides"
     value {
@@ -74,13 +84,21 @@ node {
     }
   }
 }
+
+
 node {
   name: "FeatureExtractor/MobilenetV3/Conv/BatchNorm/FusedBatchNormV3"
+  '''
+  FusedBatchNormV3 是对批标准化的一种优化实现
+  批标准化是一种用于加速深度神经网络训练的技术，通过对每个小批量数据进行标准化，有助于缓解梯度消失问题，加速收敛，并提高网络的泛化能力。
+  '''
   op: "FusedBatchNormV3"
   input: "FeatureExtractor/MobilenetV3/Conv/Conv2D"
   input: "FeatureExtractor/MobilenetV3/Conv/BatchNorm/gamma"
   input: "FeatureExtractor/MobilenetV3/Conv/BatchNorm/beta"
+  # 移动平均值
   input: "FeatureExtractor/MobilenetV3/Conv/BatchNorm/moving_mean"
+  # 移动方差
   input: "FeatureExtractor/MobilenetV3/Conv/BatchNorm/moving_variance"
   attr {
     key: "data_format"
@@ -88,6 +106,7 @@ node {
       s: "NHWC"
     }
   }
+  # epsilon 参数为 0.001，用于避免除以零的情况
   attr {
     key: "epsilon"
     value {
@@ -101,31 +120,45 @@ node {
     }
   }
 }
+
+
 node {
   name: "FeatureExtractor/MobilenetV3/Conv/hard_swish/add"
+  # 节点操作为 "AddV2"，表示加法操作
   op: "AddV2"
   input: "FeatureExtractor/MobilenetV3/Conv/BatchNorm/FusedBatchNormV3"
   input: "FeatureExtractor/MobilenetV3/Conv/hard_swish/add/y"
 }
+
+
 node {
   name: "FeatureExtractor/MobilenetV3/Conv/hard_swish/Relu6"
+  # 节点操作为 "Relu6"，表示将输入值裁剪到范围 [0, 6] 的操作
   op: "Relu6"
   input: "FeatureExtractor/MobilenetV3/Conv/hard_swish/add"
 }
+
+
 node {
   name: "FeatureExtractor/MobilenetV3/Conv/hard_swish/mul"
+  # 节点操作为 "Mul"，表示乘法操作
   op: "Mul"
   input: "FeatureExtractor/MobilenetV3/Conv/BatchNorm/FusedBatchNormV3"
   input: "FeatureExtractor/MobilenetV3/Conv/hard_swish/Relu6"
 }
+
+
 node {
   name: "FeatureExtractor/MobilenetV3/Conv/hard_swish/mul_1"
   op: "Mul"
   input: "FeatureExtractor/MobilenetV3/Conv/hard_swish/mul"
   input: "FeatureExtractor/MobilenetV3/Conv/hard_swish/mul_1/y"
 }
+
+
 node {
   name: "FeatureExtractor/MobilenetV3/expanded_conv/depthwise/depthwise"
+  # 节点操作为 "DepthwiseConv2dNative"，表示深度可分离卷积操作，能够有效减少参数量和计算量
   op: "DepthwiseConv2dNative"
   input: "FeatureExtractor/MobilenetV3/Conv/hard_swish/mul_1"
   input: "FeatureExtractor/MobilenetV3/expanded_conv/depthwise/depthwise_weights"
@@ -135,6 +168,7 @@ node {
       s: "NHWC"
     }
   }
+  # dilations 参数为 [1, 1, 1, 1]，表示在输入张量的高度和宽度上的空洞卷积的空洞率
   attr {
     key: "dilations"
     value {
@@ -164,6 +198,8 @@ node {
     }
   }
 }
+
+
 node {
   name: "FeatureExtractor/MobilenetV3/expanded_conv/depthwise/BatchNorm/FusedBatchNormV3"
   op: "FusedBatchNormV3"
