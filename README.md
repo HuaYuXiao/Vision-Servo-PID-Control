@@ -1,5 +1,7 @@
 # Vision Servo PID Control for Robotic Arm
 
+KINOVA Gen3 lite机械臂上，自然语言指令控制，MobileNetV3物品识别定位，视觉伺服PID抓取。
+
 ![HitCount](https://img.shields.io/endpoint?url=https%3A%2F%2Fhits.dwyl.com%2FHuaYuXiao%2FAdaptive-Vision-Servo-for-Robotic-Arm-Automatic-Gripping-System.json%3Fcolor%3Dpink)
 ![Static Badge](https://img.shields.io/badge/ROS-kinetic-22314E?logo=ros)
 ![Static Badge](https://img.shields.io/badge/Ubuntu-16.04-E95420?logo=ubuntu)
